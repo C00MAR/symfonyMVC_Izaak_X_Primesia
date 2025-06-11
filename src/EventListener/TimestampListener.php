@@ -2,13 +2,33 @@
 
 namespace App\EventListener;
 
-use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
+use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Doctrine\ORM\Events;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 
+#[AsDoctrineListener(event: Events::prePersist)]
+#[AsDoctrineListener(event: Events::preUpdate)]
 final class TimestampListener
 {
-    #[AsEventListener(event: 'doctrine.pre_persist')]
-    public function onDoctrinePrePersist($event): void
+    public function prePersist(LifecycleEventArgs $args): void
     {
-        // ...
+        $entity = $args->getObject();
+        
+        if (method_exists($entity, 'setCreatedAt')) {
+            $entity->setCreatedAt(new \DateTimeImmutable());
+        }
+        
+        if (method_exists($entity, 'setUpdatedAt')) {
+            $entity->setUpdatedAt(new \DateTimeImmutable());
+        }
+    }
+
+    public function preUpdate(LifecycleEventArgs $args): void
+    {
+        $entity = $args->getObject();
+        
+        if (method_exists($entity, 'setUpdatedAt')) {
+            $entity->setUpdatedAt(new \DateTimeImmutable());
+        }
     }
 }
