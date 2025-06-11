@@ -1,0 +1,18 @@
+@import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
+a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
+  color: #f6f6f6;
+  text-decoration: none;
+}
+
+.navbar {
+  color: #f6f6f6;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+/*# sourceMappingURL=header.css.map */

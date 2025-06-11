@@ -1,3 +1,36 @@
+@import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
 body {
-    background-color: skyblue;
+  margin: 0;
+  padding: 0;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+  background-color: #2d2d2d;
+  color: #f6f6f6;
+  line-height: 1.6;
+  overflow: hidden;
+  @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
 }
+body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span {
+  color: #f6f6f6;
+  text-decoration: none;
+}
+body .navbar {
+  color: #f6f6f6;
+  padding: 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 200;
+}
+body .background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/*# sourceMappingURL=app.css.map */

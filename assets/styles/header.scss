@@ -1,0 +1,17 @@
+@import "variables";
+
+a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
+    color: $white;
+    text-decoration: none;
+}
+
+.navbar {
+    color: $white;
+    padding: $spacer-24 $spacer-48;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $spacer-12;
+    font-size: 14px;
+    font-weight: 200;
+}
