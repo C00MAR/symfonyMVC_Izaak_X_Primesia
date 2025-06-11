@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block body %}
+    <h1>Modifier mon profil</h1>
+    
+    <div>
+        <p><strong>Email:</strong> {{ app.user.email }}</p>
+        <p><strong>Points:</strong> {{ app.user.points }}</p>
+        <p><strong>Statut:</strong> {{ app.user.actif ? 'Actif' : 'Désactivé' }}</p>
+    </div>
+
+    {{ form_start(form) }}
+        <div>
+            {{ form_label(form.firstname, 'Prénom') }}
+            {{ form_widget(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.lastname, 'Nom') }}
+            {{ form_widget(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+        </div>
+        
+        <button type="submit">Mettre à jour</button>
+    {{ form_end(form) }}
+    
+    <a href="{{ path('app_product_list') }}">← Retour à l'accueil</a>
+{% endblock %}

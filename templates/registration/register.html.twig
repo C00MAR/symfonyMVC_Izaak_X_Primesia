@@ -1,19 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Inscription</h1>
 
     {{ form_errors(registrationForm) }}
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div>
+            {{ form_label(registrationForm.email, 'Email') }}
+            {{ form_widget(registrationForm.email) }}
+            {{ form_errors(registrationForm.email) }}
+        </div>
+        
+        <div>
+            {{ form_label(registrationForm.firstname, 'Prénom') }}
+            {{ form_widget(registrationForm.firstname) }}
+            {{ form_errors(registrationForm.firstname) }}
+        </div>
+        
+        <div>
+            {{ form_label(registrationForm.lastname, 'Nom') }}
+            {{ form_widget(registrationForm.lastname) }}
+            {{ form_errors(registrationForm.lastname) }}
+        </div>
+        
+        <div>
+            {{ form_label(registrationForm.plainPassword, 'Mot de passe') }}
+            {{ form_widget(registrationForm.plainPassword) }}
+            {{ form_errors(registrationForm.plainPassword) }}
+        </div>
+        
+        <div>
+            {{ form_widget(registrationForm.agreeTerms) }}
+            {{ form_label(registrationForm.agreeTerms, 'J\'accepte les conditions d\'utilisation') }}
+            {{ form_errors(registrationForm.agreeTerms) }}
+        </div>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit">S'inscrire</button>
     {{ form_end(registrationForm) }}
+    
+    <p><a href="{{ path('app_login') }}">Déjà inscrit ? Connectez-vous</a></p>
 {% endblock %}

@@ -12,6 +12,34 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <nav>
+            <a href="{{ path('app_product_list') }}">Accueil</a>
+            
+            {% if app.user %}
+                <span>Bonjour {{ app.user.firstname }} {{ app.user.lastname }} ({{ app.user.points }} points)</span>
+                <a href="{{ path('app_profile') }}">Mon Profil</a>
+                
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a href="{{ path('app_admin_product_list') }}">Admin Produits</a>
+                    <a href="{{ path('app_admin_user_list') }}">Admin Users</a>
+                    <a href="{{ path('app_admin_points') }}">Distribuer Points</a>
+                {% endif %}
+                
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Connexion</a>
+                <a href="{{ path('app_register') }}">Inscription</a>
+            {% endif %}
+        </nav>
+
+        <main>
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">{{ message }}</div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}{% endblock %}
+        </main>
     </body>
 </html>

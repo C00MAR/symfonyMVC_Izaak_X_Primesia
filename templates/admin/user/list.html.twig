@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - Utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Administration des utilisateurs</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Points</th>
+                <th>Statut</th>
+                <th>Rôles</th>
+                <th>Inscrit le</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.points }}</td>
+                    <td>{{ user.actif ? 'Actif' : 'Désactivé' }}</td>
+                    <td>{{ user.roles|join(', ') }}</td>
+                    <td>{{ user.createdAt|date('d/m/Y H:i') }}</td>
+                    <td>
+                        <form method="post" action="{{ path('app_admin_user_toggle_status', {id: user.id}) }}" style="display: inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('toggle' ~ user.id) }}">
+                            <button type="submit">
+                                {{ user.actif ? 'Désactiver' : 'Activer' }}
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">Aucun utilisateur trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier {{ product.name }}{% endblock %}
+
+{% block body %}
+    <h1>Modifier le produit: {{ product.name }}</h1>
+
+    {{ form_start(form) }}
+        <div>
+            {{ form_label(form.name, 'Nom du produit') }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.price, 'Prix (en points)') }}
+            {{ form_widget(form.price) }}
+            {{ form_errors(form.price) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.formated_price, 'Prix formaté') }}
+            {{ form_widget(form.formated_price) }}
+            {{ form_errors(form.formated_price) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.category, 'Catégorie') }}
+            {{ form_widget(form.category) }}
+            {{ form_errors(form.category) }}
+        </div>
+        
+        <div>
+            {{ form_label(form.description, 'Description') }}
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+        
+        <button type="submit">Mettre à jour</button>
+    {{ form_end(form) }}
+    
+    <a href="{{ path('app_admin_product_list') }}">← Retour à la liste</a>
+{% endblock %}
