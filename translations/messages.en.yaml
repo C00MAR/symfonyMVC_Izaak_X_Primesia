@@ -28,6 +28,7 @@ user:
     status: "Status"
     active: "Active"
     disabled: "Disabled"
+    hello: "Hello"
 
 admin:
     create_product: "Create product"

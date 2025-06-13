@@ -19,7 +19,7 @@ class LocaleController extends AbstractController
         $request->getSession()->set('_locale', $locale);
 
         $referer = $request->headers->get('referer');
-        if ($referer) {
+        if ($referer && str_contains($referer, $request->getSchemeAndHttpHost())) {
             return $this->redirect($referer);
         }
 

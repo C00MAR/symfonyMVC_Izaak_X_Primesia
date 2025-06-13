@@ -5,3 +5,8 @@ controllers:
     type: attribute
 api_login_check:
     path: /api/login_check
+_locale_routing:
+    resource: .
+    type: service
+    defaults:
+        _locale: '%locale%'

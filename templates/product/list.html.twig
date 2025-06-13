@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %}{{ 'product.list_title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Liste des produits</h1>
+    <h1>{{ 'product.list_title'|trans }}</h1>
     
     <div>
         {% for product in products %}
             <article>
                 <h3>{{ product.name }}</h3>
                 <p>{{ product.description|slice(0, 100) }}{% if product.description|length > 100 %}...{% endif %}</p>
-                <p>Prix: {{ product.price }} points</p>
-                <p>Catégorie: {{ product.category }}</p>
-                <a href="{{ path('app_product_show', {id: product.id}) }}">Voir détails</a>
+                <p>{{ 'product.price'|trans }}: {{ product.price }} {{ 'user.points'|trans }}</p>
+                <p>{{ 'product.category'|trans }}: {{ product.category }}</p>
+                <a href="{{ path('app_product_show', {id: product.id}) }}">{{ 'product.details'|trans }}</a>
             </article>
         {% else %}
-            <p>Aucun produit disponible</p>
+            <p>{{ 'Aucun produit disponible'|trans }}</p>
         {% endfor %}
     </div>
 {% endblock %}
