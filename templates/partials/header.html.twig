@@ -1,18 +1,15 @@
 {% if is_granted('ROLE_ADMIN') %}
     <nav class="navbarAdmin">
-            <a href="{{ path('app_admin_product_list') }}">Admin Produits</a>
-            <a href="{{ path('app_admin_user_list') }}">Admin Users</a>
-            <a href="{{ path('app_admin_points') }}">Distribuer Points</a>
+        <a href="{{ path('app_admin_product_list') }}">{{ 'nav.admin_products'|trans }}</a>
+        <a href="{{ path('app_admin_user_list') }}">{{ 'nav.admin_users'|trans }}</a>
+        <a href="{{ path('app_admin_points') }}">{{ 'Distribuer Points'|trans }}</a>
     </nav>
 {% endif %}
+
 <nav class="navbar">
     <div class="navbar__left">
-        <a href="{{ path('app_product_list') }}">Produits</a>
+        <a href="{{ path('app_product_list') }}">{{ 'nav.products'|trans }}</a>
     </div>
-    
-    {# {% if app.user %}
-        <span>Bonjour {{ app.user.firstname }} {{ app.user.lastname }} ({{ app.user.points }} points)</span>
-    {% endif %} #}
 
     <a href="{{ path('app_home') }}" class="navbar__logo">
         <svg width="1840" height="192" viewBox="0 0 1840 192" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,15 +18,21 @@
     </a>
 
     <div class="navbar__right">
-        {# LINK TRANSLATE #}
-        <a href="{{ path('app_product_list') }}"> 
-            FR
-        </a>
+        <a href="{{ path('change_locale', {locale: 'fr'}) }}">FR</a>
+        <a href="{{ path('change_locale', {locale: 'en'}) }}">EN</a>
 
-        <a href="{{ path('app_profile') }}">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="{{ asset('img/icon-profile.svg') }}"></use>
-            </svg>
-        </a>
+        
+
+        {% if app.user %}
+            <a href="{{ path('app_profile') }}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <use xlink:href="{{ asset('img/icon-profile.svg') }}"></use>
+                </svg>
+            </a>
+            <a href="{{ path('app_logout') }}">{{ 'nav.logout'|trans }}</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">{{ 'nav.login'|trans }}</a>
+            <a href="{{ path('app_register') }}">{{ 'nav.register'|trans }}</a>
+        {% endif %}
     </div>
 </nav>

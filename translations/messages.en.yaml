@@ -1,0 +1,36 @@
+nav:
+    home: "Home"
+    products: "Products"
+    profile: "Profile"
+    login: "Login"
+    register: "Register"
+    logout: "Logout"
+    admin_products: "Admin Products"
+    admin_users: "Admin Users"
+
+product:
+    list_title: "Products list"
+    name: "Name"
+    price: "Price"
+    category: "Category"
+    description: "Description"
+    buy: "Buy"
+    details: "View details"
+    insufficient_points: "Insufficient points"
+    account_disabled: "Your account is disabled"
+
+user:
+    firstname: "First name"
+    lastname: "Last name"
+    email: "Email"
+    password: "Password"
+    points: "Points"
+    status: "Status"
+    active: "Active"
+    disabled: "Disabled"
+
+admin:
+    create_product: "Create product"
+    edit_product: "Edit product"
+    delete_product: "Delete"
+    confirm_delete: "Are you sure you want to delete this product?"

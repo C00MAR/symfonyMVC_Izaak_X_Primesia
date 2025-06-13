@@ -5,6 +5,8 @@
 {% block body %}
     {% if app.user %}
         <h1>Modifier mon profil</h1>
+
+        <span>{{ 'Hello'|trans }} {{ app.user.firstname }} ({{ app.user.points }} {{ 'user.points'|trans }})</span>
         
         <div>
             <p><strong>Email:</strong> {{ app.user.email }}</p>
