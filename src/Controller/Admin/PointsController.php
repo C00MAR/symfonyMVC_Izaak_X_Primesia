@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Message\PointsDistributionMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
@@ -20,8 +21,13 @@ final class PointsController extends AbstractController
     }
 
     #[Route('/distribute', name: 'app_admin_points_distribute', methods: ['POST'])]
-    public function distribute(MessageBusInterface $messageBus): Response
+    public function distribute(Request $request, MessageBusInterface $messageBus): Response
     {
+        if (!$this->isCsrfTokenValid('distribute_points', $request->request->get('_token'))) {
+            $this->addFlash('error', 'Token CSRF invalide.');
+            return $this->redirectToRoute('app_admin_points');
+        }
+
         $messageBus->dispatch(new PointsDistributionMessage(1000));
         
         $this->addFlash('success', '1000 points seront distribués à tous les utilisateurs actifs !');
