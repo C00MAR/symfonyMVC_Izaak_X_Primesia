@@ -2,11 +2,29 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use App\Repository\ProductRepository;
+use App\State\ProductProvider;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ApiResource(
+    operations: [
+        new GetCollection(
+            uriTemplate: '/admin/products',
+            provider: ProductProvider::class,
+            security: "is_granted('ROLE_ADMIN')"
+        ),
+        new Get(
+            uriTemplate: '/admin/products/{id}',
+            provider: ProductProvider::class,
+            security: "is_granted('ROLE_ADMIN')"
+        )
+    ]
+)]
 class Product
 {
     #[ORM\Id]
@@ -34,6 +52,10 @@ class Product
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $createdBy = null;
 
     public function getId(): ?int
     {
@@ -121,6 +143,17 @@ class Product
     {
         $this->updatedAt = $updatedAt;
 
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): static
+    {
+        $this->createdBy = $createdBy;
         return $this;
     }
 }
