@@ -16,13 +16,31 @@ use Doctrine\ORM\Mapping as ORM;
         new GetCollection(
             uriTemplate: '/admin/products',
             provider: ProductProvider::class,
-            security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')",
+            openapiContext: [
+                'security' => [['bearerAuth' => []]]
+            ]
         ),
         new Get(
             uriTemplate: '/admin/products/{id}',
             provider: ProductProvider::class,
-            security: "is_granted('ROLE_ADMIN')"
+            security: "is_granted('ROLE_ADMIN')",
+            openapiContext: [
+                'security' => [['bearerAuth' => []]]
+            ]
         )
+    ],
+    normalizationContext: ['groups' => ['product:read']],
+    openapiContext: [
+        'components' => [
+            'securitySchemes' => [
+                'bearerAuth' => [
+                    'type' => 'http',
+                    'scheme' => 'bearer',
+                    'bearerFormat' => 'JWT'
+                ]
+            ]
+        ]
     ]
 )]
 class Product
