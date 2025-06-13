@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductController extends AbstractController
 {
-    #[Route('/', name: 'app_product_list')]
+    #[Route('/product', name: 'app_product_list')]
     public function list(ProductRepository $productRepository): Response
     {
         $products = $productRepository->findAll();

@@ -1,11 +1,6 @@
 @import "variables";
 
-a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
-    color: $white;
-    text-decoration: none;
-}
-
-.navbar {
+.navbar, .navbarAdmin {
     color: $white;
     padding: $spacer-24 $spacer-48;
     display: flex;
@@ -14,4 +9,23 @@ a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
     gap: $spacer-12;
     font-size: 14px;
     font-weight: 200;
+
+    &Admin {
+        padding: $spacer-8 $spacer-12;
+        justify-content: flex-start;
+        background-color: $primary;
+        display: flex;
+        align-items: center;
+        gap: $spacer-8;
+    }
+
+    &__logo svg{
+        width: 300px;
+        height: $spacer-32;
+    }
+
+    &__left, &__right{
+        display: flex;
+        gap: $spacer-24;
+    }
 }

@@ -1,19 +1,35 @@
-<nav class="navbar">
-    <a href="{{ path('app_product_list') }}">Accueil</a>
-    
-    {% if app.user %}
-        <span>Bonjour {{ app.user.firstname }} {{ app.user.lastname }} ({{ app.user.points }} points)</span>
-        <a href="{{ path('app_profile') }}">Mon Profil</a>
-        
-        {% if 'ROLE_ADMIN' in app.user.roles %}
+{% if is_granted('ROLE_ADMIN') %}
+    <nav class="navbarAdmin">
             <a href="{{ path('app_admin_product_list') }}">Admin Produits</a>
             <a href="{{ path('app_admin_user_list') }}">Admin Users</a>
             <a href="{{ path('app_admin_points') }}">Distribuer Points</a>
-        {% endif %}
-        
-        <a href="{{ path('app_logout') }}">Déconnexion</a>
-    {% else %}
-        <a href="{{ path('app_login') }}">Connexion</a>
-        <a href="{{ path('app_register') }}">Inscription</a>
-    {% endif %}
+    </nav>
+{% endif %}
+<nav class="navbar">
+    <div class="navbar__left">
+        <a href="{{ path('app_product_list') }}">Produits</a>
+    </div>
+    
+    {# {% if app.user %}
+        <span>Bonjour {{ app.user.firstname }} {{ app.user.lastname }} ({{ app.user.points }} points)</span>
+    {% endif %} #}
+
+    <a href="{{ path('app_home') }}" class="navbar__logo">
+        <svg width="1840" height="192" viewBox="0 0 1840 192" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="{{ asset('img/logo-full-white.svg') }}"></use>
+        </svg>
+    </a>
+
+    <div class="navbar__right">
+        {# LINK TRANSLATE #}
+        <a href="{{ path('app_product_list') }}"> 
+            FR
+        </a>
+
+        <a href="{{ path('app_profile') }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <use xlink:href="{{ asset('img/icon-profile.svg') }}"></use>
+            </svg>
+        </a>
+    </div>
 </nav>

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="home">
+        <video autoplay muted loop playsinline class="home__backgroundVideo">
+            <source src="{{ asset('videos/bgVideo.mp4') }}" type="video/mp4">
+        </video>
+
+        <div class="home__title">
+            <h1>The Art of Wine Glass</h1>    
+
+            <a href="{{ path('app_product_list') }}" class="button">
+                Our glass
+            </a>
+        </div>
+    </div>
+{% endblock %}
