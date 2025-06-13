@@ -9,6 +9,9 @@
     gap: $spacer-12;
     font-size: 14px;
     font-weight: 200;
+    background: rgba($black, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 
     &Admin {
         padding: $spacer-8 $spacer-12;
@@ -19,13 +22,29 @@
         gap: $spacer-8;
     }
 
-    &__logo svg{
-        width: 300px;
-        height: $spacer-32;
+    &__logo {
+        position: absolute;
+        left: 50%;
+        translate: -50%;
+
+        svg {
+            width: 300px;
+            height: $spacer-32;
+        }
     }
 
-    &__left, &__right{
+    &__left, &__logo, &__right {
         display: flex;
+        align-items: center;
+    }
+
+    &__profile {
+        width: $spacer-24;
+        height: $spacer-24;
+    }
+
+    &__left, &__right {
         gap: $spacer-24;
     }
+
 }

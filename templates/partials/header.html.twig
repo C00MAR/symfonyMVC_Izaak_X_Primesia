@@ -16,19 +16,22 @@
             <use xlink:href="{{ asset('img/logo-full-white.svg') }}"></use>
         </svg>
     </a>
-
     <div class="navbar__right">
-        <a href="{{ path('change_locale', {locale: 'fr'}) }}">FR</a>
-        <a href="{{ path('change_locale', {locale: 'en'}) }}">EN</a>
+        {% if app.request.locale == 'fr' %}
+            <a href="{{ path('change_locale', {locale: 'en'}) }}">EN</a>
+        {% else %}
+            <a href="{{ path('change_locale', {locale: 'fr'}) }}">FR</a>
+        {% endif %}
 
         
 
         {% if app.user %}
-            <a href="{{ path('app_profile') }}">
+            <a href="{{ path('app_profile') }}" class="navbar__profile">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <use xlink:href="{{ asset('img/icon-profile.svg') }}"></use>
                 </svg>
             </a>
+            <span>{{ app.user.points }} pts</span>
             <a href="{{ path('app_logout') }}">{{ 'nav.logout'|trans }}</a>
         {% else %}
             <a href="{{ path('app_login') }}">{{ 'nav.login'|trans }}</a>

@@ -4,12 +4,17 @@ a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
   background-color: #2d2d2d;
   color: #f6f6f6;
+  min-height: 100vh;
   line-height: 1.6;
 }
 .button {
@@ -36,12 +41,16 @@ body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, bod
   color: #f6f6f6;
   text-decoration: none;
 }
+body html {
+  scroll-behavior: smooth;
+}
 body body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
   background-color: #2d2d2d;
   color: #f6f6f6;
+  min-height: 100vh;
   line-height: 1.6;
 }
 body .button {
@@ -68,6 +77,9 @@ body .navbar, body .navbarAdmin {
   gap: 12px;
   font-size: 14px;
   font-weight: 200;
+  background: rgba(45, 45, 45, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 body .navbarAdmin, body .navbarAdminAdmin {
   padding: 8px 12px;
@@ -77,17 +89,32 @@ body .navbarAdmin, body .navbarAdminAdmin {
   align-items: center;
   gap: 8px;
 }
+body .navbar__logo, body .navbarAdmin__logo {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
 body .navbar__logo svg, body .navbarAdmin__logo svg {
   width: 300px;
   height: 32px;
 }
-body .navbar__left, body .navbar__right, body .navbarAdmin__left, body .navbarAdmin__right {
+body .navbar__left, body .navbar__logo, body .navbar__right, body .navbarAdmin__left, body .navbarAdmin__logo, body .navbarAdmin__right {
   display: flex;
+  align-items: center;
+}
+body .navbar__profile, body .navbarAdmin__profile {
+  width: 24px;
+  height: 24px;
+}
+body .navbar__left, body .navbar__right, body .navbarAdmin__left, body .navbarAdmin__right {
   gap: 24px;
 }
 body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span {
   color: #f6f6f6;
   text-decoration: none;
+}
+body html {
+  scroll-behavior: smooth;
 }
 body body {
   margin: 0;
@@ -95,6 +122,7 @@ body body {
   font-family: Untitled Sans Regular, Arial, sans-serif;
   background-color: #2d2d2d;
   color: #f6f6f6;
+  min-height: 100vh;
   line-height: 1.6;
 }
 body .button {

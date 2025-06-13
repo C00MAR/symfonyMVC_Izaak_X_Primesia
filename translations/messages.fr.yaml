@@ -18,6 +18,8 @@ product:
     details: "Voir détails"
     insufficient_points: "Points insuffisants"
     account_disabled: "Votre compte est désactivé"
+    CTA: "Nos verres"
+    titleCTA: "L'art du verre à vin"
 
 user:
     firstname: "Prénom"

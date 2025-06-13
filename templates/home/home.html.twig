@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}The Art of Wine Glass - Accueil{% endblock %}
 
 {% block body %}
     <div class="home">
@@ -9,10 +9,10 @@
         </video>
 
         <div class="home__title">
-            <h1>The Art of Wine Glass</h1>    
+            <h1>{{ 'product.titleCTA'|trans }}</h1>    
 
             <a href="{{ path('app_product_list') }}" class="button">
-                Our glass
+                {{ 'product.CTA'|trans }}
             </a>
         </div>
     </div>

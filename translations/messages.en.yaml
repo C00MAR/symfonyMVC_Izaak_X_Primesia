@@ -18,6 +18,8 @@ product:
     details: "View details"
     insufficient_points: "Insufficient points"
     account_disabled: "Your account is disabled"
+    CTA: "Our glass"
+    titleCTA: "The Art of Wine Glass"
 
 user:
     firstname: "First name"
