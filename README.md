@@ -11,3 +11,7 @@ admin123
 
 user@example.com
 user123
+
+php bin/console doctrine:database:create --env=test
+php bin/console doctrine:schema:create --env=test
+php bin/phpunit

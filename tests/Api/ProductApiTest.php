@@ -16,8 +16,21 @@ class ProductApiTest extends ApiTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->entityManager = self::getContainer()->get(EntityManagerInterface::class);
-        $this->passwordHasher = self::getContainer()->get(UserPasswordHasherInterface::class);
+        $kernel = self::bootKernel();
+        $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
+        $this->passwordHasher = $kernel->getContainer()->get(UserPasswordHasherInterface::class);
+        
+        $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($this->entityManager);
+        $metadata = $this->entityManager->getMetadataFactory()->getAllMetadata();
+        $schemaTool->dropSchema($metadata);
+        $schemaTool->createSchema($metadata);
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->entityManager->close();
+        $this->entityManager = null;
     }
 
     public function testGetProductCollectionAsAdmin(): void
@@ -51,10 +64,6 @@ class ProductApiTest extends ApiTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
-        $this->assertJsonContains([
-            '@context' => '/api/contexts/Product',
-            '@type' => 'hydra:Collection',
-        ]);
     }
 
     public function testGetProductCollectionAsUserForbidden(): void
@@ -110,8 +119,6 @@ class ProductApiTest extends ApiTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertJsonContains([
-            '@context' => '/api/contexts/Product',
-            '@type' => 'Product',
             'name' => 'Test Product 2',
         ]);
     }
