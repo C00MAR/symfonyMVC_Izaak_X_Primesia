@@ -1,3 +1,5 @@
+{% set isHomePage = app.request.get('_route') == 'app_home' %}
+
 {% if is_granted('ROLE_ADMIN') %}
     <nav class="navbarAdmin">
         <a href="{{ path('app_admin_product_list') }}">{{ 'nav.admin_products'|trans }}</a>
@@ -6,14 +8,14 @@
     </nav>
 {% endif %}
 
-<nav class="navbar">
+<nav class="navbar {{ isHomePage ? 'navbar__home' : 'navbar__pages' }}">
     <div class="navbar__left">
         <a href="{{ path('app_product_list') }}">{{ 'nav.products'|trans }}</a>
     </div>
 
     <a href="{{ path('app_home') }}" class="navbar__logo">
         <svg width="1840" height="192" viewBox="0 0 1840 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <use xlink:href="{{ asset('img/logo-full-white.svg') }}"></use>
+            <use xlink:href="{{ isHomePage ?  asset('img/logo-full-white.svg') : asset('img/logo-full.svg') }}"></use>
         </svg>
     </a>
     <div class="navbar__right">

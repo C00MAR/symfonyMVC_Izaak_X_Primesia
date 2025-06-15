@@ -9,7 +9,8 @@ nav:
     admin_users: "Admin Utilisateurs"
 
 product:
-    list_title: "Liste des produits"
+    list_title: "Nos verres"
+    list_subtitle: "Nous sommes fiers qu'après 150 ans, nous ayons pu nous appuyer sur l'héritage des anciens maîtres verriers de Staré Hutě et avoir commencé la production dans une verrerie moderne portant le nom du grand verrier natif et fondateur d'une importante dynastie de verriers, M. Izaak Reich."
     name: "Nom"
     price: "Prix"
     category: "Catégorie"

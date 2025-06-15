@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Product;
 use App\Form\ProductTypeForm;
 use App\Repository\ProductRepository;
+use App\Service\FileUploadService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,11 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('ROLE_ADMIN')]
 final class ProductController extends AbstractController
 {
+    public function __construct(
+        private FileUploadService $fileUploadService,
+    ) {
+    }
+
     #[Route('/', name: 'app_admin_product_list')]
     public function list(ProductRepository $productRepository): Response
     {
@@ -38,6 +44,29 @@ final class ProductController extends AbstractController
 
             $entityManager->persist($product);
             $entityManager->flush();
+
+            $imageFiles = $form->get('imageFiles')->getData();
+            if ($imageFiles) {
+                try {
+                    $uploadedFiles = [];
+                    foreach ($imageFiles as $imageFile) {
+                        if ($imageFile) {
+                            $fileName = $this->fileUploadService->uploadSingleProductImage($imageFile, $product->getId());
+                            $uploadedFiles[] = $fileName;
+                        }
+                    }
+                    
+                    if (!empty($uploadedFiles)) {
+                        $product->setImages($uploadedFiles);
+                        $entityManager->flush();
+                    }
+                } catch (\Exception $e) {
+                    $this->addFlash('error', $e->getMessage());
+                    return $this->render('admin/product/create.html.twig', [
+                        'form' => $form,
+                    ]);
+                }
+            }
             
             $this->addFlash('success', 'Produit créé avec succès !');
             return $this->redirectToRoute('app_admin_product_list');
@@ -55,6 +84,31 @@ final class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFiles = $form->get('imageFiles')->getData();
+            if ($imageFiles && !empty($imageFiles)) {
+                try {
+                    $uploadedFiles = [];
+                    foreach ($imageFiles as $imageFile) {
+                        if ($imageFile) {
+                            $fileName = $this->fileUploadService->uploadSingleProductImage($imageFile, $product->getId());
+                            $uploadedFiles[] = $fileName;
+                        }
+                    }
+                    
+                    if (!empty($uploadedFiles)) {
+                        $currentImages = $product->getImages();
+                        $allImages = array_merge($currentImages, $uploadedFiles);
+                        $product->setImages($allImages);
+                    }
+                } catch (\Exception $e) {
+                    $this->addFlash('error', $e->getMessage());
+                    return $this->render('admin/product/edit.html.twig', [
+                        'form' => $form,
+                        'product' => $product,
+                    ]);
+                }
+            }
+
             $entityManager->flush();
             
             $this->addFlash('success', 'Produit modifié avec succès !');
@@ -70,10 +124,24 @@ final class ProductController extends AbstractController
     #[Route('/{id}/delete', name: 'app_admin_product_delete', methods: ['POST'])]
     public function delete(Product $product, EntityManagerInterface $entityManager): Response
     {
+        $this->fileUploadService->deleteAllProductImages($product->getId());
+
         $entityManager->remove($product);
         $entityManager->flush();
         
         $this->addFlash('success', 'Produit supprimé avec succès !');
         return $this->redirectToRoute('app_admin_product_list');
+    }
+
+    #[Route('/{id}/delete-image/{imageName}', name: 'app_admin_product_delete_image', methods: ['POST'])]
+    public function deleteImage(Product $product, string $imageName, EntityManagerInterface $entityManager): Response
+    {
+        $this->fileUploadService->deleteProductImage($product->getId(), $imageName);
+        
+        $product->removeImage($imageName);
+        $entityManager->flush();
+        
+        $this->addFlash('success', 'Image supprimée avec succès !');
+        return $this->redirectToRoute('app_admin_product_edit', ['id' => $product->getId()]);
     }
 }

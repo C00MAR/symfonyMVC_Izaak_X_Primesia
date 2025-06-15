@@ -1,7 +1,35 @@
 @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
-a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
-  color: #f6f6f6;
+a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span, button {
+  color: #AD4B1A;
   text-decoration: none;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+}
+
+a, .fakelink {
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #AD4B1A;
+  transition: width 0.3s ease;
+}
+
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after {
+  width: 100%;
 }
 
 html {
@@ -12,34 +40,77 @@ body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
-  background-color: #2d2d2d;
-  color: #f6f6f6;
+  background-color: #EBF0EB;
+  color: #AD4B1A;
   min-height: 100vh;
   line-height: 1.6;
 }
-.button {
+.buttonPrimary, button.buttonPrimary {
   background-color: transparent;
-  border: 1px solid #f6f6f6;
-  color: #f6f6f6;
+  border: 1px solid #AD4B1A;
+  color: #AD4B1A;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+.buttonPrimary:hover, .buttonPrimary.active, button.buttonPrimary:hover, button.buttonPrimary.active {
+  background-color: #AD4B1A;
+  color: #EBF0EB;
+}
+
+.buttonSecondary, button.buttonSecondary {
+  background-color: transparent;
+  border: 1px solid #EBF0EB;
+  color: #EBF0EB;
   padding: 12px 32px;
   font-size: 16px;
   border-radius: 64px;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
-.button:hover {
-  background-color: #f6f6f6;
-  color: #AD4B1A;
+.buttonSecondary:hover, .buttonSecondary.active, button.buttonSecondary:hover, button.buttonSecondary.active {
+  background-color: #EBF0EB;
+  color: #AD4B1A !important;
   border: 1px solid #AD4B1A;
 }
 
 body {
   @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
   @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
+  @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
+  /* Animation d'apparition */
 }
-body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span {
-  color: #f6f6f6;
+body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span, body button {
+  color: #AD4B1A;
   text-decoration: none;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+}
+body a, body .fakelink {
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #AD4B1A;
+  transition: width 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after {
+  width: 100%;
 }
 body html {
   scroll-behavior: smooth;
@@ -48,46 +119,84 @@ body body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
-  background-color: #2d2d2d;
-  color: #f6f6f6;
+  background-color: #EBF0EB;
+  color: #AD4B1A;
   min-height: 100vh;
   line-height: 1.6;
 }
-body .button {
+body .buttonPrimary, body button.buttonPrimary {
   background-color: transparent;
-  border: 1px solid #f6f6f6;
-  color: #f6f6f6;
+  border: 1px solid #AD4B1A;
+  color: #AD4B1A;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary:hover, body button.buttonPrimary.active {
+  background-color: #AD4B1A;
+  color: #EBF0EB;
+}
+body .buttonSecondary, body button.buttonSecondary {
+  background-color: transparent;
+  border: 1px solid #EBF0EB;
+  color: #EBF0EB;
   padding: 12px 32px;
   font-size: 16px;
   border-radius: 64px;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
-body .button:hover {
-  background-color: #f6f6f6;
-  color: #AD4B1A;
+body .buttonSecondary:hover, body .buttonSecondary.active, body button.buttonSecondary:hover, body button.buttonSecondary.active {
+  background-color: #EBF0EB;
+  color: #AD4B1A !important;
   border: 1px solid #AD4B1A;
 }
 body .navbar, body .navbarAdmin {
-  color: #f6f6f6;
-  padding: 24px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   font-size: 14px;
   font-weight: 200;
-  background: rgba(45, 45, 45, 0.1);
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
+body .navbar__home, body .navbarAdmin__home {
+  padding: 24px 48px;
+  background-color: #EBF0EB;
+  background: rgba(45, 45, 45, 0.1);
+  backdrop-filter: blur(10px);
+}
+body .navbar__home a, body .navbar__home p, body .navbar__home h1, body .navbar__home h2, body .navbar__home h3, body .navbar__home h4, body .navbar__home h5, body .navbar__home h6, body .navbar__home ul, body .navbar__home li, body .navbar__home span, body .navbarAdmin__home a, body .navbarAdmin__home p, body .navbarAdmin__home h1, body .navbarAdmin__home h2, body .navbarAdmin__home h3, body .navbarAdmin__home h4, body .navbarAdmin__home h5, body .navbarAdmin__home h6, body .navbarAdmin__home ul, body .navbarAdmin__home li, body .navbarAdmin__home span {
+  color: #EBF0EB !important;
+}
+body .navbar__home a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+body .navbar__home .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after, body .navbarAdmin__home a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+body .navbarAdmin__home .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  background-color: #EBF0EB !important;
+}
+body .navbar__pages, body .navbarAdmin__pages {
+  margin: 24px 48px;
+  background-color: transparent;
+  border-bottom: 1px solid #AD4B1A;
+  padding-bottom: 24px;
+}
 body .navbarAdmin, body .navbarAdminAdmin {
-  padding: 8px 12px;
+  margin: 0;
+  padding: 4px 12px;
   justify-content: flex-start;
   background-color: #AD4B1A;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+body .navbarAdmin a, body .navbarAdminAdmin a {
+  color: #EBF0EB !important;
+}
+body .navbarAdmin a::after, body .navbarAdminAdmin a::after {
+  background-color: #EBF0EB !important;
 }
 body .navbar__logo, body .navbarAdmin__logo {
   position: absolute;
@@ -109,9 +218,40 @@ body .navbar__profile, body .navbarAdmin__profile {
 body .navbar__left, body .navbar__right, body .navbarAdmin__left, body .navbarAdmin__right {
   gap: 24px;
 }
-body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span {
-  color: #f6f6f6;
+body .navbar__separator, body .navbarAdmin__separator {
+  height: 1px;
+  background-color: #AD4B1A;
+  margin: 0px 48px;
+  border: 0;
+}
+body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span, body button {
+  color: #AD4B1A;
   text-decoration: none;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+}
+body a, body .fakelink {
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #AD4B1A;
+  transition: width 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after {
+  width: 100%;
 }
 body html {
   scroll-behavior: smooth;
@@ -120,24 +260,39 @@ body body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
-  background-color: #2d2d2d;
-  color: #f6f6f6;
+  background-color: #EBF0EB;
+  color: #AD4B1A;
   min-height: 100vh;
   line-height: 1.6;
 }
-body .button {
+body .buttonPrimary, body button.buttonPrimary {
   background-color: transparent;
-  border: 1px solid #f6f6f6;
-  color: #f6f6f6;
+  border: 1px solid #AD4B1A;
+  color: #AD4B1A;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary:hover, body button.buttonPrimary.active {
+  background-color: #AD4B1A;
+  color: #EBF0EB;
+}
+body .buttonSecondary, body button.buttonSecondary {
+  background-color: transparent;
+  border: 1px solid #EBF0EB;
+  color: #EBF0EB;
   padding: 12px 32px;
   font-size: 16px;
   border-radius: 64px;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
-body .button:hover {
-  background-color: #f6f6f6;
-  color: #AD4B1A;
+body .buttonSecondary:hover, body .buttonSecondary.active, body button.buttonSecondary:hover, body button.buttonSecondary.active {
+  background-color: #EBF0EB;
+  color: #AD4B1A !important;
   border: 1px solid #AD4B1A;
 }
 body .home__backgroundVideo {
@@ -161,6 +316,218 @@ body .home__title {
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+body .home__title a, body .home__title p, body .home__title h1, body .home__title h2, body .home__title h3, body .home__title h4, body .home__title h5, body .home__title h6, body .home__title ul, body .home__title li, body .home__title span {
+  color: #EBF0EB !important;
+}
+body a, body a:visited, body p, body h1, body h2, body h3, body h4, body h5, body h6, body ul, body li, body span, body button {
+  color: #AD4B1A;
+  text-decoration: none;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+}
+body a, body .fakelink {
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #AD4B1A;
+  transition: width 0.3s ease;
+}
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+body .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after {
+  width: 100%;
+}
+body html {
+  scroll-behavior: smooth;
+}
+body body {
+  margin: 0;
+  padding: 0;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+  background-color: #EBF0EB;
+  color: #AD4B1A;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+body .buttonPrimary, body button.buttonPrimary {
+  background-color: transparent;
+  border: 1px solid #AD4B1A;
+  color: #AD4B1A;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary:hover, body button.buttonPrimary.active {
+  background-color: #AD4B1A;
+  color: #EBF0EB;
+}
+body .buttonSecondary, body button.buttonSecondary {
+  background-color: transparent;
+  border: 1px solid #EBF0EB;
+  color: #EBF0EB;
+  padding: 12px 32px;
+  font-size: 16px;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+body .buttonSecondary:hover, body .buttonSecondary.active, body button.buttonSecondary:hover, body button.buttonSecondary.active {
+  background-color: #EBF0EB;
+  color: #AD4B1A !important;
+  border: 1px solid #AD4B1A;
+}
+body .productsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  padding: 24px 48px;
+}
+body .productsPage__title, body .productsPage__filtersTitle {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #AD4B1A;
+}
+body .productsPage__subtitle {
+  font-size: 26px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.1;
+  width: 60%;
+  margin-bottom: 64px;
+}
+body .productsPage__filtersContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: start;
+  width: 100%;
+  margin-bottom: 32px;
+  gap: 12px;
+}
+body .productsPage__noProducts {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  color: #AD4B1A;
+  margin-top: 64px;
+}
+body .productsPage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  column-gap: 24px;
+  row-gap: 16px;
+  width: 100%;
+}
+body .productsPage__cardLink {
+  padding: 0;
+}
+body .productsPage__card {
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: flex-start;
+  background-color: #EBF0EB;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  gap: 2px;
+}
+body .productsPage__cardImageContainer {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body .productsPage__cardImageContainer img {
+  width: fit-content;
+  height: 350px;
+  object-fit: cover;
+}
+body .productsPage__cardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+body .productsPage__cardProductName {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+body .productsPage__cardProductDetails, body .productsPage__cardActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+body .productsPage__cardProductPrice {
+  font-size: 14px;
+  font-weight: 400;
+}
+body .productsPage__cardActions {
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 400;
+}
+body .productsPage__cardActionsDetails, body .productsPage__cardActionsBuy {
+  padding-bottom: 5px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+body .product-card {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+body .product-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+body .product-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+body .product-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+body .product-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+body .product-card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+body .product-card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=app.css.map */

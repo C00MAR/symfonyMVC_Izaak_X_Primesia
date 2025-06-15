@@ -5,40 +5,77 @@
 {% block body %}
     <h1>Administration des produits</h1>
     
-    <a href="{{ path('app_admin_product_create') }}">Créer un nouveau produit</a>
+    <div style="margin-bottom: 20px;">
+        <a href="{{ path('app_admin_product_create') }}" 
+           style="background-color: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; display: inline-block;">
+            Créer un nouveau produit
+        </a>
+    </div>
     
-    <table>
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prix</th>
-                <th>Catégorie</th>
-                <th>Créé le</th>
-                <th>Actions</th>
+            <tr style="background-color: #f8f9fa;">
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">ID</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Image</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Nom</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Prix</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Catégorie</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Images</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Créé le</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }} points</td>
-                    <td>{{ product.category }}</td>
-                    <td>{{ product.createdAt|date('d/m/Y H:i') }}</td>
-                    <td>
-                        <a href="{{ path('app_product_show', {id: product.id}) }}">Voir</a>
-                        <a href="{{ path('app_admin_product_edit', {id: product.id}) }}">Modifier</a>
-                        
-                        <form method="post" action="{{ path('app_admin_product_delete', {id: product.id}) }}" style="display: inline;">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
-                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</button>
-                        </form>
+                    <td style="border: 1px solid #ddd; padding: 12px;">{{ product.id }}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">
+                        {% if product.hasImages %}
+                            <img src="{{ asset(product.firstImagePath) }}" 
+                                 alt="{{ product.name }}" 
+                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                        {% else %}
+                            <span style="color: #999; font-style: italic;">Pas d'image</span>
+                        {% endif %}
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">{{ product.name }}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">{{ product.price }} points</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">{{ product.category }}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">
+                        <span style="background-color: #e9ecef; padding: 4px 8px; border-radius: 12px; font-size: 12px;">
+                            {{ product.images|length }} image(s)
+                        </span>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">{{ product.createdAt|date('d/m/Y H:i') }}</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">
+                        <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                            <a href="{{ path('app_product_show', {id: product.id}) }}" 
+                               style="background-color: #17a2b8; color: white; padding: 5px 10px; text-decoration: none; border-radius: 3px; font-size: 12px;">
+                                Voir
+                            </a>
+                            <a href="{{ path('app_admin_product_edit', {id: product.id}) }}" 
+                               style="background-color: #ffc107; color: black; padding: 5px 10px; text-decoration: none; border-radius: 3px; font-size: 12px;">
+                                Modifier
+                            </a>
+                            
+                            <form method="post" 
+                                  action="{{ path('app_admin_product_delete', {id: product.id}) }}" 
+                                  style="display: inline;"
+                                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produit et toutes ses images ?')">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                                <button type="submit" 
+                                        style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 12px;">
+                                    Supprimer
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="6">Aucun produit trouvé</td>
+                    <td colspan="8" style="border: 1px solid #ddd; padding: 20px; text-align: center; color: #999;">
+                        Aucun produit trouvé
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

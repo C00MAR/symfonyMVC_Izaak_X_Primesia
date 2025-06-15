@@ -1,7 +1,35 @@
 @import url(https://db.onlinewebfonts.com/c/1a3681e2cd615bd458b68dce439102a4?family=Untitled+Sans+Regular);
-a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span {
-  color: #f6f6f6;
+a, a:visited, p, h1, h2, h3, h4, h5, h6, ul, li, span, button {
+  color: #AD4B1A;
   text-decoration: none;
+  font-family: Untitled Sans Regular, Arial, sans-serif;
+}
+
+a, .fakelink {
+  border: none;
+  cursor: pointer;
+  padding: 8px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 5px;
+  left: 0;
+  background-color: #AD4B1A;
+  transition: width 0.3s ease;
+}
+
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover::after,
+.fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary):hover:not(.disabled)::after {
+  width: 100%;
 }
 
 html {
@@ -12,47 +40,86 @@ body {
   margin: 0;
   padding: 0;
   font-family: Untitled Sans Regular, Arial, sans-serif;
-  background-color: #2d2d2d;
-  color: #f6f6f6;
+  background-color: #EBF0EB;
+  color: #AD4B1A;
   min-height: 100vh;
   line-height: 1.6;
 }
-.button {
+.buttonPrimary, button.buttonPrimary {
   background-color: transparent;
-  border: 1px solid #f6f6f6;
-  color: #f6f6f6;
+  border: 1px solid #AD4B1A;
+  color: #AD4B1A;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 64px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+.buttonPrimary:hover, .buttonPrimary.active, button.buttonPrimary:hover, button.buttonPrimary.active {
+  background-color: #AD4B1A;
+  color: #EBF0EB;
+}
+
+.buttonSecondary, button.buttonSecondary {
+  background-color: transparent;
+  border: 1px solid #EBF0EB;
+  color: #EBF0EB;
   padding: 12px 32px;
   font-size: 16px;
   border-radius: 64px;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
-.button:hover {
-  background-color: #f6f6f6;
-  color: #AD4B1A;
+.buttonSecondary:hover, .buttonSecondary.active, button.buttonSecondary:hover, button.buttonSecondary.active {
+  background-color: #EBF0EB;
+  color: #AD4B1A !important;
   border: 1px solid #AD4B1A;
 }
 
 .navbar, .navbarAdmin {
-  color: #f6f6f6;
-  padding: 24px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
   font-size: 14px;
   font-weight: 200;
-  background: rgba(45, 45, 45, 0.1);
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
+.navbar__home, .navbarAdmin__home {
+  padding: 24px 48px;
+  background-color: #EBF0EB;
+  background: rgba(45, 45, 45, 0.1);
+  backdrop-filter: blur(10px);
+}
+.navbar__home a, .navbar__home p, .navbar__home h1, .navbar__home h2, .navbar__home h3, .navbar__home h4, .navbar__home h5, .navbar__home h6, .navbar__home ul, .navbar__home li, .navbar__home span, .navbarAdmin__home a, .navbarAdmin__home p, .navbarAdmin__home h1, .navbarAdmin__home h2, .navbarAdmin__home h3, .navbarAdmin__home h4, .navbarAdmin__home h5, .navbarAdmin__home h6, .navbarAdmin__home ul, .navbarAdmin__home li, .navbarAdmin__home span {
+  color: #EBF0EB !important;
+}
+.navbar__home a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+.navbar__home .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after, .navbarAdmin__home a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after,
+.navbarAdmin__home .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+  background-color: #EBF0EB !important;
+}
+.navbar__pages, .navbarAdmin__pages {
+  margin: 24px 48px;
+  background-color: transparent;
+  border-bottom: 1px solid #AD4B1A;
+  padding-bottom: 24px;
+}
 .navbarAdmin, .navbarAdminAdmin {
-  padding: 8px 12px;
+  margin: 0;
+  padding: 4px 12px;
   justify-content: flex-start;
   background-color: #AD4B1A;
   display: flex;
   align-items: center;
   gap: 8px;
+}
+.navbarAdmin a, .navbarAdminAdmin a {
+  color: #EBF0EB !important;
+}
+.navbarAdmin a::after, .navbarAdminAdmin a::after {
+  background-color: #EBF0EB !important;
 }
 .navbar__logo, .navbarAdmin__logo {
   position: absolute;
@@ -73,6 +140,12 @@ body {
 }
 .navbar__left, .navbar__right, .navbarAdmin__left, .navbarAdmin__right {
   gap: 24px;
+}
+.navbar__separator, .navbarAdmin__separator {
+  height: 1px;
+  background-color: #AD4B1A;
+  margin: 0px 48px;
+  border: 0;
 }
 
 /*# sourceMappingURL=header.css.map */

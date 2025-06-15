@@ -57,6 +57,9 @@ class Product
     #[ORM\JoinColumn(nullable: true)]
     private ?User $createdBy = null;
 
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $images = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,5 +158,61 @@ class Product
     {
         $this->createdBy = $createdBy;
         return $this;
+    }
+
+    public function getImages(): ?array
+    {
+        return $this->images ?? [];
+    }
+
+    public function setImages(?array $images): static
+    {
+        $this->images = $images;
+        return $this;
+    }
+
+    public function addImage(string $image): static
+    {
+        if (!in_array($image, $this->getImages())) {
+            $this->images[] = $image;
+        }
+        return $this;
+    }
+
+    public function removeImage(string $image): static
+    {
+        $images = $this->getImages();
+        $key = array_search($image, $images);
+        if ($key !== false) {
+            unset($images[$key]);
+            $this->images = array_values($images);
+        }
+        return $this;
+    }
+
+    public function getImagePaths(): array
+    {
+        $paths = [];
+        foreach ($this->getImages() as $image) {
+            $paths[] = '/uploads/products/' . $this->getId() . '/' . $image;
+        }
+        return $paths;
+    }
+
+    public function getFirstImage(): ?string
+    {
+        $images = $this->getImages();
+        return !empty($images) ? $images[0] : null;
+    }
+
+    public function getFirstImagePath(): ?string
+    {
+        $firstImage = $this->getFirstImage();
+        return $firstImage ? '/uploads/products/' . $this->getId() . '/' . $firstImage : null;
+    }
+
+    public function hasImages(): bool
+    {
+        return !empty($this->getImages());
     }
 }

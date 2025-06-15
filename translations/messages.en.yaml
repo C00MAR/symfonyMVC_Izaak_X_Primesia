@@ -9,7 +9,8 @@ nav:
     admin_users: "Admin Users"
 
 product:
-    list_title: "Products list"
+    list_title: "Our glass"
+    list_subtitle: "We are proud that after 150 years, we could build on the legacy of the ancient glass masters from Staré Hutě and have commenced production in a modern glassworks bearing the name of the native, great glassmaker, and founder of a significant glassmaking dynasty, Mr. Izaak Reich."
     name: "Name"
     price: "Price"
     category: "Category"

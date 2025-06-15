@@ -3,19 +3,116 @@
 {% block title %}{{ 'product.list_title'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'product.list_title'|trans }}</h1>
-    
-    <div>
-        {% for product in products %}
-            <article>
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.description|slice(0, 100) }}{% if product.description|length > 100 %}...{% endif %}</p>
-                <p>{{ 'product.price'|trans }}: {{ product.price }} {{ 'user.points'|trans }}</p>
-                <p>{{ 'product.category'|trans }}: {{ product.category }}</p>
-                <a href="{{ path('app_product_show', {id: product.id}) }}">{{ 'product.details'|trans }}</a>
-            </article>
-        {% else %}
-            <p>{{ 'Aucun produit disponible'|trans }}</p>
-        {% endfor %}
+    <div class="productsPage">
+        <div class="productsPage__titleAndSubtitle">
+            <h1 class="productsPage__title">{{ 'product.list_title'|trans }}</h1>
+            <p class="productsPage__subtitle">{{ 'product.list_subtitle'|trans }}</p>
+        </div>
+
+        <div class="productsPage__filtersSection">
+            <h2 class="productsPage__filtersTitle">FILTER</h2>
+            <div class="productsPage__filtersContainer">
+                <button class="buttonPrimary active" data-filter="all">All</button>
+                <button class="buttonPrimary" data-filter="verres-a-vin">Red wines</button>
+                <button class="buttonPrimary" data-filter="verres-a-champagne">White wines</button>
+                <button class="buttonPrimary" data-filter="sets">Sparkling wines</button>
+                <button class="buttonPrimary" data-filter="accessoires">Spirits</button>
+                <button class="buttonPrimary" data-filter="special">Water</button>
+            </div>
+        </div>
+
+        <div class="productsPage__grid">
+            {% if products is empty %}
+                <div class="productsPage__noProducts">
+                    <p>{{ 'Aucun produit disponible'|trans }}</p>
+                </div>
+            {% else %}
+                {% for product in products %}
+                    <a href="{{ path('app_product_show', {id: product.id}) }}" class="productsPage__cardLink">
+                        <div class="productsPage__card" data-category="{{ product.category|lower|replace({' ': '-'}) }}">
+                            <div class="productsPage__cardImageContainer">
+                                {% if product.hasImages %}
+                                    <img src="{{ asset(product.firstImagePath) }}" 
+                                        alt="{{ product.name }}" 
+                                        class="productsPage__cardImage">
+                                {% else %}
+                                    <div class="productsPage__cardNoImage">
+                                        <img src="{{ asset('img/placeholder-product.jpeg') }}" 
+                                            alt="{{ product.name }}" 
+                                            class="productsPage__image productsPage__image--placeholder">
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="productsPage__cardInfo">
+                                <p class="productsPage__cardProductName">{{ product.name }}</h3>
+                                <div class="productsPage__cardProductDetails">
+                                    <span class="productsPage__cardProductPrice">{{ product.price }} PTS</span>
+                                    <div class="productsPage__cardActions">
+                                        <p class="productsPage__cardActionsDetails fakelink">Detail</p>
+                                        {% if app.user and app.user.actif and app.user.points >= product.price %}
+                                            <form method="post" action="{{ path('app_purchase', {id: product.id}) }}" class="buy-form">
+                                                <button type="submit" class="productsPage__cardActionsBuy fakelink">Buy</button>
+                                            </form>
+                                        {% else %}
+                                            <button class="productsPage__cardActionsBuy fakelink disabled" disabled>Buy</button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <div class="no-products">
+                        <p>{{ 'Aucun produit disponible'|trans }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.buttonPrimary');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    productCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        
+                        if (filter === 'all' || category.includes(filter.replace('-', ' '))) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.6s ease forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = '0s';
+                        entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    }
+                });
+            }, observerOptions);
+
+            productCards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 {% endblock %}

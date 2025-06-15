@@ -1,25 +1,54 @@
 @import "variables";
 
 .navbar, .navbarAdmin {
-    color: $white;
-    padding: $spacer-24 $spacer-48;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: $spacer-12;
     font-size: 14px;
     font-weight: 200;
-    background: rgba($black, 0.1);
-    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 
+    &__home {
+        padding: $spacer-24 $spacer-48;
+        background-color: $white;
+        background: rgba($black, 0.1);
+        backdrop-filter: blur(10px);
+
+
+        a, p, h1, h2, h3, h4, h5, h6, ul, li, span {
+            color: $white !important;
+        }
+
+        a:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after, 
+        .fakelink:not(.productsPage__cardLink):not(.buttonPrimary):not(.buttonSecondary)::after {
+            background-color: $white !important;
+        }
+    }
+
+    &__pages {
+        margin: $spacer-24 $spacer-48;
+        background-color: transparent;
+        border-bottom: 1px solid $primary;
+        padding-bottom: $spacer-24;
+    }
+
     &Admin {
-        padding: $spacer-8 $spacer-12;
+        margin: 0;
+        padding: $spacer-4 $spacer-12;
         justify-content: flex-start;
         background-color: $primary;
         display: flex;
         align-items: center;
         gap: $spacer-8;
+        
+        a {
+            color: $white !important;
+
+            &::after {
+                background-color: $white !important;
+            }
+        }
     }
 
     &__logo {
@@ -47,4 +76,10 @@
         gap: $spacer-24;
     }
 
+    &__separator {
+        height: 1px;
+        background-color: $primary;
+        margin: 0px 48px;
+        border: 0;
+    }
 }
