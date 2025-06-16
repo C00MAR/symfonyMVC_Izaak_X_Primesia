@@ -47,6 +47,7 @@ body {
 }
 .buttonPrimary, button.buttonPrimary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #AD4B1A;
   color: #AD4B1A;
   padding: 8px 16px;
@@ -63,6 +64,7 @@ body {
 
 .buttonSecondary, button.buttonSecondary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #EBF0EB;
   color: #EBF0EB;
   padding: 12px 32px;
@@ -126,6 +128,7 @@ body body {
 }
 body .buttonPrimary, body button.buttonPrimary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #AD4B1A;
   color: #AD4B1A;
   padding: 8px 16px;
@@ -141,6 +144,7 @@ body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary
 }
 body .buttonSecondary, body button.buttonSecondary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #EBF0EB;
   color: #EBF0EB;
   padding: 12px 32px;
@@ -267,6 +271,7 @@ body body {
 }
 body .buttonPrimary, body button.buttonPrimary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #AD4B1A;
   color: #AD4B1A;
   padding: 8px 16px;
@@ -282,6 +287,7 @@ body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary
 }
 body .buttonSecondary, body button.buttonSecondary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #EBF0EB;
   color: #EBF0EB;
   padding: 12px 32px;
@@ -363,6 +369,7 @@ body body {
 }
 body .buttonPrimary, body button.buttonPrimary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #AD4B1A;
   color: #AD4B1A;
   padding: 8px 16px;
@@ -378,6 +385,7 @@ body .buttonPrimary:hover, body .buttonPrimary.active, body button.buttonPrimary
 }
 body .buttonSecondary, body button.buttonSecondary {
   background-color: transparent;
+  cursor: pointer;
   border: 1px solid #EBF0EB;
   color: #EBF0EB;
   padding: 12px 32px;

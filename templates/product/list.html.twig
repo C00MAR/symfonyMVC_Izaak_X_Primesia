@@ -12,12 +12,13 @@
         <div class="productsPage__filtersSection">
             <h2 class="productsPage__filtersTitle">FILTER</h2>
             <div class="productsPage__filtersContainer">
-                <button class="buttonPrimary active" data-filter="all">All</button>
-                <button class="buttonPrimary" data-filter="verres-a-vin">Red wines</button>
-                <button class="buttonPrimary" data-filter="verres-a-champagne">White wines</button>
-                <button class="buttonPrimary" data-filter="sets">Sparkling wines</button>
-                <button class="buttonPrimary" data-filter="accessoires">Spirits</button>
-                <button class="buttonPrimary" data-filter="special">Water</button>
+                <button class="buttonPrimary active" data-filter="all">{{ 'product.filter.all'|trans }}</button>
+                <button class="buttonPrimary" data-filter="red-wine">{{ 'product.filter.redwine'|trans }}</button>
+                <button class="buttonPrimary" data-filter="white-wine">{{ 'product.filter.whitewine'|trans }}</button>
+                <button class="buttonPrimary" data-filter="red-wine-&-white-wine">{{ 'product.filter.rednwhitewine'|trans }}</button>
+                <button class="buttonPrimary" data-filter="sparkling-wine">{{ 'product.filter.sparkling'|trans }}</button>
+                <button class="buttonPrimary" data-filter="spirits">{{ 'product.filter.spirits'|trans }}</button>
+                <button class="buttonPrimary" data-filter="water">{{ 'product.filter.water'|trans }}</button>
             </div>
         </div>
 
@@ -28,8 +29,8 @@
                 </div>
             {% else %}
                 {% for product in products %}
-                    <a href="{{ path('app_product_show', {id: product.id}) }}" class="productsPage__cardLink">
-                        <div class="productsPage__card" data-category="{{ product.category|lower|replace({' ': '-'}) }}">
+                    <a href="{{ path('app_product_show', {id: product.id}) }}" class="productsPage__cardLink" data-category="{{ product.category|lower|replace({' ': '-'}) }}">
+                        <div class="productsPage__card">
                             <div class="productsPage__cardImageContainer">
                                 {% if product.hasImages %}
                                     <img src="{{ asset(product.firstImagePath) }}" 
@@ -73,8 +74,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.buttonPrimary');
-            const productCards = document.querySelectorAll('.product-card');
+            const filterBtns = document.getElementsByClassName('productsPage__filtersContainer')[0].querySelectorAll('.buttonPrimary');
+            const productCards = document.querySelectorAll('.productsPage__cardLink');
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -86,7 +87,7 @@
                     productCards.forEach(card => {
                         const category = card.getAttribute('data-category');
                         
-                        if (filter === 'all' || category.includes(filter.replace('-', ' '))) {
+                        if (filter === 'all' || category.includes(filter)) {
                             card.style.display = 'block';
                             card.style.animation = 'fadeInUp 0.6s ease forwards';
                         } else {

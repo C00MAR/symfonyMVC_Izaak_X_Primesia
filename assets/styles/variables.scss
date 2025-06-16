@@ -72,6 +72,7 @@ body {
 
 .buttonPrimary, button.buttonPrimary {
     background-color: transparent;
+    cursor: pointer;
     border: 1px solid $primary;
     color: $primary;
     padding: $spacer-8 $spacer-16;
@@ -89,6 +90,7 @@ body {
 
 .buttonSecondary, button.buttonSecondary {
     background-color: transparent;
+    cursor: pointer;
     border: 1px solid $white;
     color: $white;
     padding: $spacer-12 $spacer-32;

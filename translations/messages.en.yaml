@@ -21,6 +21,14 @@ product:
     account_disabled: "Your account is disabled"
     CTA: "Our glass"
     titleCTA: "The Art of Wine Glass"
+    filter:
+        all: "All"
+        redwine: "Red wine"
+        whitewine: "White wine"
+        rednwhitewine: "Red and White wine"
+        sparkling: "Sparkling wine"
+        spirits: "Spirits"
+        water: "Water"
 
 user:
     firstname: "First name"

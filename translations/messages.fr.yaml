@@ -21,6 +21,14 @@ product:
     account_disabled: "Votre compte est désactivé"
     CTA: "Nos verres"
     titleCTA: "L'art du verre à vin"
+    filter:
+        all: "Tous"
+        redwine: "Vin rouge"
+        whitewine: "Vin blanc"
+        rednwhitewine: "Vin rouge et blanc"
+        sparkling: "Vin pétillant"
+        spirits: "Spiritueux"
+        water: "Eau"
 
 user:
     firstname: "Prénom"
