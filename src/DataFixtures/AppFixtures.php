@@ -49,49 +49,109 @@ class AppFixtures extends Fixture
                 'name' => 'Linden Nº 1 Red',
                 'price' => 100,
                 'category' => 'Red Wine',
-                'description' => 'Mouth-blown glass No.1 Red from the Linden series with its large lime leaf shape will open fully structured wines aging in oak barrels. It works great with Pinot Noir, Merlot, or Nebbiolo varieties.
-                                    Our glasses are mouth-blown in the Izaak Reich glassworks using lead-free crystal glass. With each package, you will receive a certificate of authenticity with the signature of the master glassmaker who made these glasses for you.
-                                    The author of the design is Rony Plesl, a leading Czech artist, sculptor, designer, and professor.',
-                'images' => ['LindenRed-1.jpg', 'LindenRed-2.jpg', 'LindenRed-3.jpg', 'LindenRed-4.jpg']
+                'description' => 'Mouth-blown glass No.1 Red from the Linden series with its large lime leaf shape will open fully structured wines aging in oak barrels. It works great with Pinot Noir, Merlot, or Nebbiolo varieties.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-960671653/products/images/1198x1198crop/zx-izaakreich-linden-detail-n1-1.webp',
+                    'https://www.izaakreich.com/res/crc-2334150058/products/images/1198x1198crop/x5-izaakreich-linden-detail-n1-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ],
             [
                 'name' => 'Linden Nº 2 Red & White',
                 'price' => 150,
                 'category' => 'Red Wine & White Wine',
-                'description' => 'Mouth-blown glass No.2 Red&White from the Linden series will suit full-bodied white wines aged in barrel and bottle (especially Chardonnay, Pinot blanc, or Riesling) and fresh red wines of younger vintages (especially Pinot noir, Blaufränkisch, Sangiovese).
-                                    Our glasses are mouth-blown in the Izaak Reich glassworks using lead-free crystal glass. With each package, you will receive a certificate of authenticity with the signature of the master glassmaker who made these glasses for you.
-                                    The author of the design is Rony Plesl, a leading Czech artist, sculptor, designer, and professor.',
-                'images' => ['LindenRedWhite-1.jpg', 'LindenRedWhite-2.jpg', 'LindenRedWhite-3.jpg', 'LindenRedWhite-4.jpg']
+                'description' => 'Mouth-blown glass No.2 Red&White from the Linden series will suit full-bodied white wines aged in barrel and bottle (especially Chardonnay, Pinot blanc, or Riesling) and fresh red wines of younger vintages (especially Pinot noir, Blaufränkisch, Sangiovese).',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-2995887537/products/images/1198x1198crop/ho-izaakreich-linden-detail-n2-1.webp',
+                    'https://www.izaakreich.com/res/crc-3657036641/products/images/1198x1198crop/9h-izaakreich-linden-detail-n2-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ],
             [
                 'name' => 'Linden Nº 3 White',
                 'price' => 80,
                 'category' => 'White Wine',
-                'description' => 'Mouth-blown glass No.2 Red&White from the Linden series will suit full-bodied white wines aged in barrel and bottle (especially Chardonnay, Pinot blanc, or Riesling) and fresh red wines of younger vintages (especially Pinot noir, Blaufränkisch, Sangiovese).
-                                    Our glasses are mouth-blown in the Izaak Reich glassworks using lead-free crystal glass. With each package, you will receive a certificate of authenticity with the signature of the master glassmaker who made these glasses for you.
-                                    The author of the design is Rony Plesl, a leading Czech artist, sculptor, designer, and professor.',
-                'images' => ['LindenWhite-1.jpg', 'LindenWhite-2.jpg', 'LindenWhite-3.jpg', 'LindenWhite-4.jpg']
+                'description' => 'Mouth-blown glass No.3 White from the Linden series, perfect for fresh white wines and light varietals.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-552760266/products/images/1198x1198crop/4b-izaakreich-linden-detail-n3-1.webp',
+                    'https://www.izaakreich.com/res/crc-2320450881/products/images/1198x1198crop/ky-izaakreich-linden-detail-n3-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ],
             [
-                'name' => 'Set de verres dégustation',
+                'name' => 'Linden Nº 4 Sparkling',
                 'price' => 250,
-                'category' => 'Sets',
-                'description' => 'Ensemble complet de 6 verres pour la dégustation professionnelle. Idéal pour les amateurs de vin souhaitant explorer toutes les nuances gustatives. Comprend verres pour rouge, blanc et champagne.',
-                'images' => ['set-degustation-1.jpg', 'set-degustation-2.jpg', 'set-degustation-3.jpg']
+                'category' => 'Sparkling Wine',
+                'description' => 'Mouth-blown No.4 Sparkling glass from the Linden series, in the shape of a folded lime leaf, will go well with all sparkling wines, but its full potential can only be exploited with wines produced by bottle fermentation, such as Champagne, Crémant, Cava, or Franciacorta.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-2987964744/products/images/1198x1198crop/h4-izaakreich-linden-detail-n4-1.webp',
+                    'https://www.izaakreich.com/res/crc-1971773342/products/images/1198x1198crop/xf-izaakreich-linden-detail-n4-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ],
             [
-                'name' => 'Verre à Bordeaux Grand Cru',
+                'name' => 'Linden Nº 5 Brandy',
                 'price' => 180,
-                'category' => 'Verres à vin',
-                'description' => 'Verre spécialement conçu pour les grands crus de Bordeaux. Sa forme unique permet une oxygénation optimale des tanins. Recommandé par les sommelier professionnels.',
-                'images' => ['verre-bordeaux-1.jpg', 'verre-bordeaux-2.jpg']
+                'category' => 'Spirits',
+                'description' => 'Mouth-blown No.5 Brandy glass from the Linden series with its inverted lime leaf shape is ideal for long-aged Brandy such as Cognac or Armagnac.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-458633740/products/images/1198x1198crop/lp-izaakreich-linden-detail-n5-1.webp',
+                    'https://www.izaakreich.com/res/crc-3270668671/products/images/1198x1198crop/nc-izaakreich-linden-detail-n5-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ],
             [
-                'name' => 'Carafe à décanter',
+                'name' => 'Linden Nº 6 Rum & Whisky',
                 'price' => 300,
-                'category' => 'Accessoires',
-                'description' => 'Carafe en cristal pour décanter vos vins les plus précieux. Permet une aération parfaite et une présentation élégante. Indispensable pour les grands vins de garde.',
-                'images' => ['carafe-decanter-1.jpg', 'carafe-decanter-2.jpg', 'carafe-decanter-3.jpg', 'carafe-decanter-4.jpg', 'carafe-decanter-5.jpg']
+                'category' => 'Spirits',
+                'description' => 'The mouth-blown No. 6 Rum & Whisky glass from the Linden series is well-suited for serving quality Caribbean rums and long-aged Scotch whiskies.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-2378307605/products/images/1198x1198crop/4k-izaakreich-linden-detail-n6-1.webp',
+                    'https://www.izaakreich.com/res/crc-1177777345/products/images/1198x1198crop/09-izaakreich-linden-detail-n6-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
+            ],
+            [
+                'name' => 'Linden Nº 7 Digestif',
+                'price' => 160,
+                'category' => 'Spirits',
+                'description' => 'The mouth-blown No.7 Digestive glass from the Linden series will beautifully finish your festive dinner, whether you fill it with Italian grappa or French calvados.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-1031335117/products/images/1198x1198crop/vp-izaakreich-linden-detail-n7-1.webp',
+                    'https://www.izaakreich.com/res/crc-4126770939/products/images/1198x1198crop/9k-izaakreich-linden-detail-n7-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
+            ],
+            [
+                'name' => 'Linden Water Optique',
+                'price' => 80,
+                'category' => 'Water',
+                'description' => 'This exquisite mouth-blown water glass resembles broad linden leaves and is crafted using the Optique glass method, which produces a beautiful interplay of light and reflections.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-2408188175/products/images/1198x1198crop/b0-izaakreich-linden-detail-gls-clear-1.webp',
+                    'https://www.izaakreich.com/res/crc-339408436/products/images/1198x1198crop/ew-izaakreich-linden-detail-gls-clear-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
+            ],
+            [
+                'name' => 'Linden Carafe & Water Optique',
+                'price' => 140,
+                'category' => 'Water',
+                'description' => 'These exquisite mouth-blown glasses and water carafes resemble broad linden leaves and are crafted using the Optique glass method, which produces a beautiful interplay of light and reflections.',
+                'imageUrls' => [
+                    'https://www.izaakreich.com/res/crc-1475138913/products/images/1198x1198crop/fp-izaakreich-linden-detail-car-clear-1.webp',
+                    'https://www.izaakreich.com/res/crc-3420450964/products/images/1198x1198crop/ky-izaakreich-linden-detail-car-clear-2.webp',
+                    'https://www.izaakreich.com/res/crc-2421355163/products/images/1198x1198crop/x7-izaakreich-linden-detail-1.webp',
+                    'https://www.izaakreich.com/res/crc-549190153/products/images/1198x1198crop/t4-izaakreich-linden-detail-2.webp'
+                ]
             ]
         ];
 
@@ -107,8 +167,8 @@ class AppFixtures extends Fixture
             $manager->persist($product);
             $manager->flush();
             
-            $this->createProductImages($product->getId(), $productData['images']);
-            $product->setImages($productData['images']);
+            $downloadedImages = $this->downloadImagesFromUrls($product->getId(), $productData['imageUrls']);
+            $product->setImages($downloadedImages);
             
             $manager->persist($product);
         }
@@ -116,7 +176,7 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
-    private function createProductImages(int $productId, array $imageNames): void
+    private function downloadImagesFromUrls(int $productId, array $imageUrls): array
     {
         $productDir = $this->projectDir . '/public/uploads/products/' . $productId;
         
@@ -124,57 +184,53 @@ class AppFixtures extends Fixture
             mkdir($productDir, 0755, true);
         }
 
-        $colors = ['#8B0000', '#FFD700', '#F5F5DC', '#4B0082', '#800020', '#2F4F4F', '#DC143C', '#228B22'];
+        $downloadedFiles = [];
         
-        foreach ($imageNames as $index => $imageName) {
-            $imagePath = $productDir . '/' . $imageName;
-            
-            if (!file_exists($imagePath)) {
-                $this->createDemoImage($imagePath, $colors[$index % count($colors)], "Image " . ($index + 1));
+        foreach ($imageUrls as $index => $url) {
+            try {
+                $imageContent = file_get_contents($url);
+                
+                if ($imageContent === false) {
+                    echo "Erreur lors du téléchargement de l'image: $url\n";
+                    continue;
+                }
+                
+                $pathInfo = pathinfo(parse_url($url, PHP_URL_PATH));
+                $extension = $pathInfo['extension'] ?? 'jpg';
+                
+                if (empty($extension) || !in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
+                    $imageInfo = getimagesizefromstring($imageContent);
+                    if ($imageInfo !== false) {
+                        $extension = match ($imageInfo[2]) {
+                            IMAGETYPE_JPEG => 'jpg',
+                            IMAGETYPE_PNG => 'png',
+                            IMAGETYPE_GIF => 'gif',
+                            IMAGETYPE_WEBP => 'webp',
+                            default => 'jpg'
+                        };
+                    } else {
+                        $extension = 'jpg';
+                    }
+                }
+                
+                $filename = sprintf('image_%d_%s.%s', $index + 1, uniqid(), $extension);
+                $filePath = $productDir . '/' . $filename;
+                
+                if (file_put_contents($filePath, $imageContent) !== false) {
+                    $downloadedFiles[] = $filename;
+                    echo "Image téléchargée: $filename\n";
+                } else {
+                    echo "Erreur lors de la sauvegarde de l'image: $filename\n";
+                }
+                
+                usleep(100000);
+                
+            } catch (\Exception $e) {
+                echo "Erreur lors du téléchargement de l'image $url: " . $e->getMessage() . "\n";
+                continue;
             }
         }
-    }
-
-    // THIS FUNCTION IS MADE WITH AI :
-    private function createDemoImage(string $path, string $hexColor, string $text): void
-    {
-        $width = 800;
-        $height = 600;
         
-        $image = imagecreatetruecolor($width, $height);
-        
-        $rgb = sscanf($hexColor, "#%02x%02x%02x");
-        $background = imagecolorallocate($image, $rgb[0], $rgb[1], $rgb[2]);
-        $white = imagecolorallocate($image, 255, 255, 255);
-        $gray = imagecolorallocate($image, 128, 128, 128);
-        
-        imagefill($image, 0, 0, $background);
-        
-        $centerX = $width / 2;
-        $centerY = $height / 2;
-        
-        $radius = min($width, $height) * 0.25;
-        imageellipse($image, $centerX, $centerY, $radius * 2, $radius * 2, $white);
-        imageellipse($image, $centerX, $centerY, ($radius * 2) - 6, ($radius * 2) - 6, $gray);
-        
-        for ($i = 0; $i < 3; $i++) {
-            $x = $centerX + cos($i * 2 * M_PI / 3) * $radius * 0.6;
-            $y = $centerY + sin($i * 2 * M_PI / 3) * $radius * 0.6;
-            imageellipse($image, $x, $y, 40, 40, $white);
-        }
-        
-        $lines = explode(' ', $text);
-        $y = $centerY - (count($lines) * 15);
-        foreach ($lines as $line) {
-            $x = $centerX - (strlen($line) * 8);
-            imagestring($image, 5, max(10, $x), $y, $line, $white);
-            $y += 30;
-        }
-        
-        $filename = basename($path, '.jpg');
-        imagestring($image, 2, 10, $height - 20, $filename, $gray);
-        
-        imagejpeg($image, $path, 90);
-        imagedestroy($image);
+        return $downloadedFiles;
     }
 }
