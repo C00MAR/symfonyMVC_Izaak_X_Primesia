@@ -16,11 +16,18 @@ product:
     category: "Catégorie"
     description: "Description"
     buy: "Acheter"
-    details: "Voir détails"
+    details: "Détails"
+    noResult: "Aucun produit disponible"
     insufficient_points: "Points insuffisants"
     account_disabled: "Votre compte est désactivé"
     CTA: "Nos verres"
+    quantity:
+        title: "Quel forfait recherchez-vous ?"
+        single: "Verre Simple"
+        double: "Ensemble de 2 verres"
     titleCTA: "L'art du verre à vin"
+    stock:
+        label: "EN STOCK"
     filter:
         all: "Tous"
         redwine: "Vin rouge"

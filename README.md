@@ -2,7 +2,7 @@ symfony server:start
 
 php bin/console messenger:consume async -vv
 
-sass --watch \assets\styles\app.scss:\assets\styles\app.css
+sass --watch assets\styles\app.scss:assets\styles\app.css
 
 php bin/console doctrine:fixtures:load --no-interaction
 

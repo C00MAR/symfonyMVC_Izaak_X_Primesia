@@ -16,11 +16,18 @@ product:
     category: "Category"
     description: "Description"
     buy: "Buy"
-    details: "View details"
+    details: "Details"
+    noResult: "No Product Available"
     insufficient_points: "Insufficient points"
     account_disabled: "Your account is disabled"
     CTA: "Our glass"
+    quantity:
+        title: "WHAT PACKAGE ARE YOU LOOKING FOR ?"
+        single: "Single glass"
+        double: "Set of 2 glasses"
     titleCTA: "The Art of Wine Glass"
+    stock:
+        label: "IN STOCK"
     filter:
         all: "All"
         redwine: "Red wine"

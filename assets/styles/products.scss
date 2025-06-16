@@ -117,28 +117,158 @@
             font-weight: 400;
         }
     }
+
+    &__cardLink {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+    &:nth-child(4) { animation-delay: 0.4s; }
+    &:nth-child(5) { animation-delay: 0.5s; }
+    &:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
-        /* Animation d'apparition */
-        .product-card {
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards;
+.productDetailPage {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: center;
+    padding: $spacer-24 $spacer-48;
+
+    &__detailImages {
+        display: flex;
+        flex-direction: row;
+        width: 200%;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        align-content: flex-start;
+        gap: $spacer-12;
+    }
+
+    &__image {
+        max-width: 30vw;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: flex-start;
+        max-width: 100%;
+
+        &Title {
+            font-size: 30px;
+            font-weight: 400;
+            margin-bottom: $spacer-4;
         }
 
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
-        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        &Price {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: $spacer-32;
+        }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+        &QuantityTitle {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: $spacer-12;
+        }
+
+        &QuantityOptions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: $spacer-12;
+            margin-bottom: $spacer-8;
+
+            label {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: $spacer-8;
+
+                &:hover .productDetailPage__infoQuantityLabel {
+                    color: $white;
+                }
+                
+                input[type="radio"] {
+                    margin: 0;
+                    width: 16px;
+                    height: 16px;
+                    accent-color: #AD4B1A;
+                }
             }
         }
+
+        &Stock {
+            display: flex;
+            align-items: center;
+            gap: $spacer-8;
+            margin-bottom: $spacer-32;
+
+            &Indicator {
+                color: #28a745;
+                font-size: 16px;
+            }
+
+            &Text {
+                font-size: 14px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+        }
+    }
+
+    &__purchase {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: $spacer-16;
+
+        &QuantitySelector {
+            display: flex;
+            align-items: center;
+            border: 1px solid $primary;
+            border-radius: 25px;
+            padding: $spacer-8;
+            justify-content: space-between;
+            overflow: hidden;
+            gap: $spacer-4;
+            width: 90px;
+
+            .qty-btn {
+                border: none;
+                cursor: pointer;
+
+                svg {
+                    width: 20px;
+                    height: 20px
+                }
+            }
+
+            .quantity {
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -3,67 +3,57 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block body %}
-    <div class="product-detail-page">
-        <div class="product-container">
-            <div class="product-images">
+    <div class="productDetailPage">
+            <div class="productDetailPage__detailImages">
                 {% if product.hasImages %}
-                    <div class="image-grid">
-                        {% for image in product.images|slice(0, 2) %}
-                            <div class="image-item">
-                                <img src="{{ asset('/uploads/products/' ~ product.id ~ '/' ~ image) }}" 
-                                     alt="{{ product.name }}" 
-                                     class="product-image">
-                            </div>
+                        {% for image in product.images|slice(0, 6) %}
+                            <img src="{{ asset('/uploads/products/' ~ product.id ~ '/' ~ image) }}" 
+                                    alt="{{ product.name }}" 
+                                    class="productDetailPage__image">
                         {% endfor %}
                         
                         {% if product.images|length < 2 %}
                             {% for i in range(product.images|length, 1) %}
-                                <div class="image-item">
-                                    <div class="image-placeholder"></div>
-                                </div>
+                                <img src="{{ asset('img/placeholder-product.jpeg') }}" 
+                                    alt="{{ product.name }}" 
+                                    class="productDetailPage__image productDetailPage__image--placeholder">
                             {% endfor %}
                         {% endif %}
-                    </div>
                 {% else %}
-                    <div class="image-grid">
-                        <div class="image-item">
-                            <div class="image-placeholder"></div>
-                        </div>
-                        <div class="image-item">
-                            <div class="image-placeholder"></div>
-                        </div>
-                    </div>
+                        {% for i in range(0, 6) %}
+                            <img src="{{ asset('img/placeholder-product.jpeg') }}" 
+                                alt="{{ product.name }}" 
+                                class="productDetailPage__image productDetailPage__image--placeholder">
+                        {% endfor %}
                 {% endif %}
             </div>
 
-            <div class="product-info">
-                <h1 class="product-title">{{ product.name }}</h1>
-                <div class="product-price">{{ product.price }} PTS</div>
+            <div class="productDetailPage__info">
+                <p class="productDetailPage__infoTitle">{{ product.name }}</p>
+                <p class="productDetailPage__infoPrice">{{ product.formatedPrice }}</p>
 
-                <div class="package-selection">
-                    <h3 class="package-title">WHAT PACKAGE ARE YOU LOOKING FOR?</h3>
-                    <div class="package-options">
-                        <label class="package-option">
-                            <input type="radio" name="package" value="single" checked>
-                            <span class="package-label">Single glass</span>
-                        </label>
-                        <label class="package-option">
-                            <input type="radio" name="package" value="set-2">
-                            <span class="package-label">Set of 2 glasses</span>
-                        </label>
-                    </div>
+                <p class="productDetailPage__infoQuantityTitle">{{ 'product.quantity.title'|trans }}</p>
+                <div class="productDetailPage__infoQuantityOptions">
+                    <label class="buttonPrimary">
+                        <input type="radio" name="package" value="1" checked>
+                        <span class="productDetailPage__infoQuantityLabel">{{ 'product.quantity.single'|trans }}</span>
+                    </label>
+                    <label class="buttonPrimary">
+                        <input type="radio" name="package" value="2">
+                        <span class="productDetailPage__infoQuantityLabel">{{ 'product.quantity.double'|trans }}</span>
+                    </label>
                 </div>
 
-                <div class="stock-status">
-                    <span class="stock-indicator">●</span>
-                    <span class="stock-text">IN STOCK</span>
+                <div class="productDetailPage__infoStock">
+                    <span class="productDetailPage__infoStockIndicator">●</span>
+                    <span class="productDetailPage__infoStockText">{{ 'product.stock.label'|trans }}</span>
                 </div>
 
-                <div class="purchase-section">
-                    <div class="quantity-selector">
-                        <button type="button" class="qty-btn minus" onclick="changeQuantity(-1)">−</button>
+                <div class="productDetailPage__purchase">
+                    <div class="productDetailPage__purchaseQuantitySelector">
+                        <button type="button" class="qty-btn minus" onclick="changeQuantity(-1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11.5H4V12.5H20V11.5Z" fill="#AD4B1A" stroke="#AD4B1A" stroke-width="0.5"/></svg></button>
                         <span class="quantity" id="quantity">1</span>
-                        <button type="button" class="qty-btn plus" onclick="changeQuantity(1)">+</button>
+                        <button type="button" class="qty-btn plus" onclick="changeQuantity(1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12.5 4H11.5V11.5H4V12.5H11.5V20H12.5V12.5H20V11.5H12.5V4Z" fill="#AD4B1A" stroke="#AD4B1A" stroke-width="0.5"/></svg></button>
                     </div>
 
                     {% if app.user %}
@@ -110,9 +100,8 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
-
+{# 
     <style>
         .product-detail-page {
             background-color: #f5f5f0;
@@ -239,12 +228,12 @@
             accent-color: #AD4B1A;
         }
 
-        .package-option input[type="radio"]:checked + .package-label {
+        .package-option input[type="radio"]:checked + .productDetailPage__infoQuantityLabel {
             color: #AD4B1A;
             font-weight: 500;
         }
 
-        .package-label {
+        .productDetailPage__infoQuantityLabel {
             font-size: 14px;
             color: #333;
             transition: color 0.3s ease;
@@ -469,7 +458,7 @@
                 font-size: 20px;
             }
         }
-    </style>
+    </style> #}
 
     <script>
         let currentQuantity = 1;

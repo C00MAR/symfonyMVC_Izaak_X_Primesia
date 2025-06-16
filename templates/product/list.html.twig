@@ -25,7 +25,7 @@
         <div class="productsPage__grid">
             {% if products is empty %}
                 <div class="productsPage__noProducts">
-                    <p>{{ 'Aucun produit disponible'|trans }}</p>
+                    <p>{{ 'product.noResult'|trans }}</p>
                 </div>
             {% else %}
                 {% for product in products %}
@@ -48,15 +48,15 @@
                             <div class="productsPage__cardInfo">
                                 <p class="productsPage__cardProductName">{{ product.name }}</h3>
                                 <div class="productsPage__cardProductDetails">
-                                    <span class="productsPage__cardProductPrice">{{ product.price }} PTS</span>
+                                    <span class="productsPage__cardProductPrice">{{ product.formatedPrice }}</span>
                                     <div class="productsPage__cardActions">
-                                        <p class="productsPage__cardActionsDetails fakelink">Detail</p>
+                                        <p class="productsPage__cardActionsDetails fakelink">{{ 'product.details'|trans }}</p>
                                         {% if app.user and app.user.actif and app.user.points >= product.price %}
                                             <form method="post" action="{{ path('app_purchase', {id: product.id}) }}" class="buy-form">
-                                                <button type="submit" class="productsPage__cardActionsBuy fakelink">Buy</button>
+                                                <button type="submit" class="productsPage__cardActionsBuy fakelink">{{ 'product.buy'|trans }}</button>
                                             </form>
                                         {% else %}
-                                            <button class="productsPage__cardActionsBuy fakelink disabled" disabled>Buy</button>
+                                            <button class="productsPage__cardActionsBuy fakelink disabled" disabled>{{ 'product.buy'|trans }}</button>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -64,8 +64,8 @@
                         </div>
                     </a>
                 {% else %}
-                    <div class="no-products">
-                        <p>{{ 'Aucun produit disponible'|trans }}</p>
+                    <div class="productsPage__noProducts">
+                        <p>{{ 'product.noResult'|trans }}</p>
                     </div>
                 {% endfor %}
             {% endif %}
