@@ -603,6 +603,12 @@ body .productDetailPage__infoQuantityOptions label input[type=radio] {
   height: 16px;
   accent-color: #AD4B1A;
 }
+body .productDetailPage__infoQuantityOptions label input[type=radio]:checked + .productDetailPage__infoQuantityLabel {
+  color: #EBF0EB;
+}
+body .productDetailPage__infoQuantityOptions label:has(input[type=radio]:checked) {
+  background-color: #AD4B1A;
+}
 body .productDetailPage__infoStock {
   display: flex;
   align-items: center;
