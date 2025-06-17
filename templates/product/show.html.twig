@@ -115,16 +115,19 @@
         }
 
         function toggleDescription() {
+            const parent = document.querySelector('.productDetailPage__Description');
             const content = document.getElementById('productDetailPage__DescriptionContent');
             const toggle = document.querySelector('.productDetailPage__DescriptionToggle');
             
             if (content.classList.contains('collapsed')) {
+                parent.style.paddingBottom = "24px";
                 content.classList.remove('collapsed');
                 content.style.maxHeight = content.scrollHeight + 'px';
                 content.style.opacity = 1;
                 toggle.textContent = '−';
                 toggle.classList.remove('collapsed');
             } else {
+                parent.style.paddingBottom = "0px";
                 content.classList.add('collapsed');
                 content.style.maxHeight = '0';
                 content.style.opacity = 0;
