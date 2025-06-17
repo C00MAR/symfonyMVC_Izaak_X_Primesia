@@ -145,7 +145,6 @@
 .productDetailPage {
     display: flex;
     flex-direction: row;
-    align-items: left;
     justify-content: center;
     padding: $spacer-24 $spacer-48;
 
@@ -157,11 +156,11 @@
         align-items: flex-start;
         justify-content: flex-start;
         align-content: flex-start;
-        gap: $spacer-12;
     }
 
     &__image {
-        max-width: 30vw;
+        max-width: 45%;
+        padding: $spacer-12;
     }
 
     &__info {
@@ -213,7 +212,7 @@
                     margin: 0;
                     width: 16px;
                     height: 16px;
-                    accent-color: #AD4B1A;
+                    accent-color: $primary;
                 }
             }
         }
@@ -243,6 +242,9 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;
+        border-bottom: $primary 1px solid;
+        padding-bottom: $spacer-32;
+        margin-bottom: $spacer-32;
         gap: $spacer-16;
 
         &QuantitySelector {
@@ -268,6 +270,93 @@
 
             .quantity {
                 font-size: 14px;
+            }
+        }
+
+        .add-to-cart-form {
+            .productDetailPage__purchaseAddToCartButton {
+                background-color: $primary;
+                color: $white;
+                border: none;
+                padding: 12px 32px;
+                border-radius: 25px;
+                font-size: 16px;
+                font-weight: 500;
+                border: 1px solid $primary;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+                text-align: center;
+
+                &:hover:not(.disabled) {
+                    background-color: $white;
+                    color: $primary;
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(173, 75, 26, 0.3);
+                }
+
+                &.disabled {
+                    border: 1px solid #ccc;
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                    transform: none;
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    &__Description {
+        &Header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+
+            &Title {
+                font-size: 18px;
+                color: $primary;
+                margin: 0;
+                font-weight: 500;
+                margin-bottom: $spacer-8;
+            }
+        }
+        
+        &Toggle {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: $primary;
+            cursor: pointer;
+            width: $spacer-32;
+            height: $spacer-32;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+
+            &.collapsed {
+                transform: rotate(180deg);
+            }
+        }
+
+        &Content {
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.3s ease;
+
+            &.collapsed {
+                max-height: 0;
+            }
+
+            p {
+                margin-bottom: 15px;
+            }
+
+            p:last-child {
+                margin-bottom: 0;
             }
         }
     }

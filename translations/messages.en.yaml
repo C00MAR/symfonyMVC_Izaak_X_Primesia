@@ -15,6 +15,12 @@ product:
     price: "Price"
     category: "Category"
     description: "Description"
+    descriptionInfo: 
+        label: "About the product"
+        descOur: "Our glasses are mouth-blown in the Izaak Reich glassworks using lead-free crystal glass. With each package, you will receive a certificate of authenticity with the signature of the master glassmaker who made these glasses for you."
+        descAuth: "The author of the design is Rony Plesl, a leading Czech artist, sculptor, designer, and professor."
+    atcbtn: 
+        label: "Add to cart"
     buy: "Buy"
     details: "Details"
     noResult: "No Product Available"

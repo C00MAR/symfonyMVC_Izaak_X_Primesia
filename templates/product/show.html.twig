@@ -62,403 +62,45 @@
                                 <form method="post" action="{{ path('app_purchase', {id: product.id}) }}" class="add-to-cart-form">
                                     <input type="hidden" name="quantity" id="form-quantity" value="1">
                                     <input type="hidden" name="package" id="form-package" value="single">
-                                    <button type="submit" class="add-to-cart-btn">
-                                        Add to cart
+                                    <button type="submit" class="productDetailPage__purchaseAddToCartButton">
+                                        {{ 'product.atcbtn.label'|trans }}
                                     </button>
                                 </form>
                             {% else %}
-                                <button class="add-to-cart-btn disabled" disabled>
+                                <button class="productDetailPage__purchaseAddToCartButton disabled" disabled>
                                     Insufficient points
                                 </button>
                             {% endif %}
                         {% else %}
-                            <button class="add-to-cart-btn disabled" disabled>
+                            <button class="productDetailPage__purchaseAddToCartButton disabled" disabled>
                                 Account disabled
                             </button>
                         {% endif %}
                     {% else %}
-                        <a href="{{ path('app_login') }}" class="add-to-cart-btn">
+                        <a href="{{ path('app_login') }}">
                             Login to purchase
                         </a>
                     {% endif %}
                 </div>
 
-                <div class="product-description">
-                    <div class="description-header">
-                        <h3>About the product</h3>
-                        <button class="description-toggle" onclick="toggleDescription()">−</button>
+                <div class="productDetailPage__Description">
+                    <div class="productDetailPage__DescriptionHeader" onclick="toggleDescription()">
+                        <p class="productDetailPage__DescriptionHeaderTitle">{{ 'product.descriptionInfo.label'|trans }}</p>
+                        <button class="productDetailPage__DescriptionToggle">−</button>
                     </div>
-                    <div class="description-content" id="description-content">
+                    <div class="productDetailPage__DescriptionContent" id="productDetailPage__DescriptionContent">
                         <p>{{ product.description }}</p>
                         
                         {% if product.category %}
-                            <p><strong>Category:</strong> {{ product.category }}</p>
+                            <p><strong>{{ 'product.category'|trans }} :</strong> {{ product.category }}</p>
                         {% endif %}
                         
-                        <p>Our glasses are mouth-blown in the Izaak Reich glassworks using lead-free crystal glass. With each package, you will receive a certificate of authenticity with the signature of the master glassmaker who made these glasses for you.</p>
-                        <p>The author of the design is Rony Plesl, a leading Czech artist, sculptor, designer, and professor.</p>
+                        <p>{{ 'product.descriptionInfo.descOur'|trans }}</p>
+                        <p>{{ 'product.descriptionInfo.descAuth'|trans }}</p>
                     </div>
                 </div>
             </div>
     </div>
-{# 
-    <style>
-        .product-detail-page {
-            background-color: #f5f5f0;
-            min-height: 100vh;
-            padding: 0;
-        }
-
-        .product-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
-        }
-
-        .product-images {
-            background-color: #f5f5f0;
-            padding: 60px 40px 60px 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .image-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .image-item {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-        }
-
-        .product-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.3);
-            border: 1px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 14px;
-        }
-
-        /* Informations à droite */
-        .product-info {
-            background-color: white;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .product-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 400;
-            color: #AD4B1A;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .product-price {
-            font-size: 24px;
-            color: #AD4B1A;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .package-selection {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .package-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0;
-        }
-
-        .package-options {
-            display: flex;
-            gap: 20px;
-        }
-
-        .package-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            padding: 12px 20px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            background-color: white;
-        }
-
-        .package-option:hover {
-            border-color: #AD4B1A;
-        }
-
-        .package-option input[type="radio"] {
-            margin: 0;
-            width: 16px;
-            height: 16px;
-            accent-color: #AD4B1A;
-        }
-
-        .package-option input[type="radio"]:checked + .productDetailPage__infoQuantityLabel {
-            color: #AD4B1A;
-            font-weight: 500;
-        }
-
-        .productDetailPage__infoQuantityLabel {
-            font-size: 14px;
-            color: #333;
-            transition: color 0.3s ease;
-        }
-
-        .stock-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .stock-indicator {
-            color: #28a745;
-            font-size: 12px;
-        }
-
-        .stock-text {
-            font-size: 14px;
-            color: #28a745;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .purchase-section {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            background-color: white;
-            overflow: hidden;
-        }
-
-        .qty-btn {
-            background: none;
-            border: none;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        .qty-btn:hover {
-            color: #AD4B1A;
-        }
-
-        .quantity {
-            padding: 0 20px;
-            font-size: 16px;
-            font-weight: 500;
-            color: #333;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .add-to-cart-form {
-            margin: 0;
-        }
-
-        .add-to-cart-btn {
-            background-color: #AD4B1A;
-            color: white;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .add-to-cart-btn:hover:not(.disabled) {
-            background-color: #8B3A14;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(173, 75, 26, 0.3);
-        }
-
-        .add-to-cart-btn.disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .product-description {
-            border-top: 1px solid #eee;
-            padding-top: 30px;
-        }
-
-        .description-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .description-header h3 {
-            font-size: 18px;
-            color: #AD4B1A;
-            margin: 0;
-            font-weight: 500;
-        }
-
-        .description-toggle {
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: #AD4B1A;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .description-toggle.collapsed {
-            transform: rotate(180deg);
-        }
-
-        .description-content {
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .description-content.collapsed {
-            max-height: 0;
-        }
-
-        .description-content p {
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .description-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .product-container {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .product-images {
-                padding: 40px;
-            }
-
-            .image-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-            }
-
-            .product-info {
-                padding: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .product-images {
-                padding: 30px 20px;
-            }
-
-            .image-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .product-info {
-                padding: 30px 20px;
-                gap: 30px;
-            }
-
-            .product-title {
-                font-size: 36px;
-            }
-
-            .package-options {
-                flex-direction: column;
-            }
-
-            .purchase-section {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-            }
-
-            .quantity-selector {
-                align-self: flex-start;
-            }
-
-            .add-to-cart-btn {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .product-title {
-                font-size: 28px;
-            }
-
-            .product-price {
-                font-size: 20px;
-            }
-        }
-    </style> #}
 
     <script>
         let currentQuantity = 1;
@@ -473,17 +115,19 @@
         }
 
         function toggleDescription() {
-            const content = document.getElementById('description-content');
-            const toggle = document.querySelector('.description-toggle');
+            const content = document.getElementById('productDetailPage__DescriptionContent');
+            const toggle = document.querySelector('.productDetailPage__DescriptionToggle');
             
             if (content.classList.contains('collapsed')) {
                 content.classList.remove('collapsed');
                 content.style.maxHeight = content.scrollHeight + 'px';
+                content.style.opacity = 1;
                 toggle.textContent = '−';
                 toggle.classList.remove('collapsed');
             } else {
                 content.classList.add('collapsed');
                 content.style.maxHeight = '0';
+                content.style.opacity = 0;
                 toggle.textContent = '+';
                 toggle.classList.add('collapsed');
             }
@@ -501,7 +145,7 @@
                 });
             });
 
-            const content = document.getElementById('description-content');
+            const content = document.getElementById('productDetailPage__DescriptionContent');
             content.style.maxHeight = content.scrollHeight + 'px';
         });
     </script>

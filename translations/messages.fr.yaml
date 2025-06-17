@@ -15,6 +15,12 @@ product:
     price: "Prix"
     category: "Catégorie"
     description: "Description"
+    descriptionInfo: 
+        label: "À propos du produit"
+        descOur: "Nos verres sont soufflés à la bouche dans la verrerie Izaak Reich avec du cristal sans plomb. Chaque colis est accompagné d'un certificat d'authenticité signé du maître verrier qui a réalisé ces verres."
+        descAuth: "L'auteur du projet est Rony Plesl, un artiste, sculpteur, designer et professeur tchèque de premier plan."
+    atcbtn: 
+        label: "Ajouter au panier"
     buy: "Acheter"
     details: "Détails"
     noResult: "Aucun produit disponible"
